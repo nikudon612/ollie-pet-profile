@@ -24,7 +24,7 @@ export default function HomeScreen() {
         renderItem={({ item }) => (
           <Pressable
             style={styles.card}
-            onPress={() => navigation.navigate('Profile', { pet: item })}
+            onPress={() => navigation.navigate('profile', { pet: item })}
           >
             <Text style={styles.name}>{item.name}</Text>
             <Text>ID: {item.id}</Text>
