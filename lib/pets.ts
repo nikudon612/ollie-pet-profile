@@ -1,3 +1,4 @@
+//This file contains the mock data for pets and the function to simulate fetching this data from an API.
 export type Pet = {
   id: string;
   name: string;
@@ -44,5 +45,14 @@ const mockPets: Pet[] = [
         gender: "Female",
         photoUrl: "https://example.com/goose.jpg",
     },
-    
 ];
+
+// This function simulates an API call to fetch pet data
+// This timeout is only to simulate a network delay and allow for loading states in the UI for demo purposes.
+export const getPets = async (): Promise<Pet[]> => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(mockPets);
+        }, 1000);
+    });
+};
