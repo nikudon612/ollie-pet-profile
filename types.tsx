@@ -7,7 +7,7 @@ export type Pet = {
     age?: number;
     weightKg?: number;
     gender?: string;
-    photo?: string;
+    photo: string;
   };
 
 export type RootStackParamList = {
