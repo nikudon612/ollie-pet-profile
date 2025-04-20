@@ -39,6 +39,8 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
+     
+
       <View style={styles.container}>
         <FlatList
           data={pets}
@@ -72,12 +74,12 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    padding: 32,
     backgroundColor: "#e6e1d5",
     overflow: "hidden",
   },
   card: {
-    height: 300,
+    height: 400,
     borderRadius: 40,
     overflow: "hidden",
     marginBottom: 16,
