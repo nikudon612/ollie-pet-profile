@@ -7,9 +7,9 @@ export type Pet = {
     age?: number;
     weightKg?: number;
     gender?: string;
-    photoUrl?: string;
+    photo?: string;
   };
-  
+
 export type RootStackParamList = {
     index: undefined; // no params sent *to* HomeScreen
     profile: {

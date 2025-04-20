@@ -12,7 +12,7 @@ const mockPets: Pet[] = [
     age: 2,
     weightKg: 10,
     gender: "Male",
-    photoUrl: "https://example.com/bruce.jpg",
+    photo: "Bruce",
   },
   {
     id: "2",
@@ -23,7 +23,7 @@ const mockPets: Pet[] = [
     age: 5,
     weightKg: 20,
     gender: "Male",
-    photoUrl: "https://example.com/oscar.jpg",
+    photo: "Oscar",
   },
   {
     id: "3",
@@ -34,7 +34,7 @@ const mockPets: Pet[] = [
     age: 1,
     weightKg: 5,
     gender: "Female",
-    photoUrl: "https://example.com/goose.jpg",
+    photo: "Goose",
   },
 ];
 

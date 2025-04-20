@@ -1,13 +1,35 @@
 // app/(tabs)/index.tsx
 import { useEffect, useState } from "react";
-import { View, Text, Pressable, FlatList, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  FlatList,
+  StyleSheet,
+  Image,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
 
+// Must use static require calls!
+const photoMap: Record<string, any> = {
+  Bruce: require("../assets/images/Bruce.jpg"),
+  Oscar: require("../assets/images/Oscar.jpg"),
+  Goose: require("../assets/images/Goose.jpg"),
+};
+
 export default function HomeScreen() {
-  const [pets, setPets] = useState<Pet[]>([]);
   const navigation = useNavigation();
+  const [pets, setPets] = useState<Pet[]>([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      const data = await getPets();
+      setPets(data);
+    };
+    fetch();
+  }, []);
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -29,7 +51,7 @@ export default function HomeScreen() {
               onPress={() => navigation.navigate("profile", { pet: item })}
             >
               <Image
-                source={{ uri: item.photoUrl }}
+                source={photoMap[item.photo]}
                 style={styles.image}
                 resizeMode="cover"
               />
@@ -49,11 +71,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3EFE6",
   },
   card: {
-    padding: 16,
+    padding: 20,
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 8,
-    marginBottom: 12,
+    borderRadius: 40,
+    marginBottom: 24,
     backgroundColor: "#fff",
   },
   name: {
