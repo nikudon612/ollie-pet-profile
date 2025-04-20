@@ -3,8 +3,6 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { Pet } from "../types";
 
-const navigation = useNavigation();
-
 type RouteParams = {
   profile: {
     pet: Pet;
@@ -12,6 +10,7 @@ type RouteParams = {
 };
 
 export default function ProfileScreen() {
+  const navigation = useNavigation();
   const route = useRoute<RouteProp<RouteParams, "profile">>();
   const { pet } = route.params;
 
