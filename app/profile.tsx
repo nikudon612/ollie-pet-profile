@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 20,
+    color: "white",
   },
   row: {
     marginBottom: 16,
@@ -63,6 +64,6 @@ const styles = StyleSheet.create({
   },
   value: {
     fontSize: 18,
-    color: "#000",
+    color: "white",
   },
 });
