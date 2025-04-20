@@ -37,14 +37,6 @@ export default function HomeScreen() {
     fetch();
   }, []);
 
-  useEffect(() => {
-    const fetchPets = async () => {
-      const data = await getPets();
-      setPets(data);
-    };
-    fetchPets();
-  }, []);
-
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -80,16 +72,15 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     padding: 16,
     backgroundColor: "#e6e1d5",
+    overflow: "hidden",
   },
   card: {
-    width: "100%",
     height: 300,
     borderRadius: 40,
     overflow: "hidden",
-    marginBottom: 18,
+    marginBottom: 16,
     justifyContent: "flex-end",
   },
   image: {

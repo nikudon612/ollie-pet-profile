@@ -1,5 +1,12 @@
 // app/profile.tsx
-import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Image,
+  Pressable,
+} from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { Pet } from "../types";
 
@@ -9,6 +16,17 @@ type RouteParams = {
   };
 };
 
+// Must use static require calls!
+const photoMap: Record<string, any> = {
+  Bruce: require("../assets/images/Bruce.jpg"),
+  Oscar: require("../assets/images/Oscar.jpg"),
+  Goose: require("../assets/images/Goose.jpg"),
+  Navi: require("../assets/images/Navi.jpg"),
+  Jab: require("../assets/images/Jab.jpg"),
+  Baobao: require("../assets/images/Baobao.jpg"),
+  Tobi: require("../assets/images/Tobi.jpg"),
+};
+
 export default function ProfileScreen() {
   const navigation = useNavigation();
   const route = useRoute<RouteProp<RouteParams, "profile">>();
@@ -16,6 +34,11 @@ export default function ProfileScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <Image
+        source={photoMap[pet.photo]}
+        style={{ width: "100%", height: 200, borderRadius: 10 }}
+        resizeMode="cover"
+      />
       <Text style={styles.heading}>{pet.name}</Text>
 
       <View style={styles.row}>
