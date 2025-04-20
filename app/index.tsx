@@ -7,16 +7,22 @@ import {
   FlatList,
   StyleSheet,
   Image,
+  ImageBackground,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { LinearGradient } from 'expo-linear-gradient'; // we'll use this for real gradient
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
   Bruce: require("../assets/images/Bruce.jpg"),
   Oscar: require("../assets/images/Oscar.jpg"),
   Goose: require("../assets/images/Goose.jpg"),
+  Navi: require("../assets/images/Navi.jpg"),
+  Jab: require("../assets/images/Jab.jpg"),
+  Baobao: require("../assets/images/Baobao.jpg"),
+  Tobi: require("../assets/images/Tobi.jpg"),
 };
 
 export default function HomeScreen() {
@@ -50,12 +56,20 @@ export default function HomeScreen() {
               style={styles.card}
               onPress={() => navigation.navigate("profile", { pet: item })}
             >
-              <Image
+              <ImageBackground
                 source={photoMap[item.photo]}
-                style={styles.image}
-                resizeMode="cover"
-              />
-              <Text style={styles.name}>{item.name}</Text>
+                style={styles.card}
+                imageStyle={styles.image}
+              >
+                <LinearGradient
+                  colors={["transparent", "rgba(0,0,0,0.7)"]}
+                  style={styles.overlay}
+                >
+                  <Text style={styles.name}>{item.name}</Text>
+                </LinearGradient>
+              </ImageBackground>
+
+              {/* Overlay container */}
             </Pressable>
           )}
         />
@@ -65,28 +79,26 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    flex: 1,
-    backgroundColor: "#F3EFE6",
-  },
   card: {
-    padding: 20,
-    borderWidth: 1,
-    borderColor: "#ccc",
+    width: "100%",
+    height: 300,
     borderRadius: 40,
-    marginBottom: 24,
-    backgroundColor: "#fff",
-  },
-  name: {
-    fontWeight: "bold",
-    fontSize: 18,
-    marginBottom: 4,
+    overflow: "hidden",
+    marginBottom: 16,
+    justifyContent: "flex-end",
   },
   image: {
+    borderRadius: 12,
+  },
+  overlay: {
     width: "100%",
-    height: 200,
-    borderRadius: 8,
-    marginBottom: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+    justifyContent: "flex-end",
+  },
+  name: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: "#fff",
   },
 });
