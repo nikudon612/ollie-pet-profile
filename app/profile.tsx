@@ -37,9 +37,9 @@ export default function ProfileScreen() {
         <Text style={styles.label}>Neutered:</Text>
         <Text style={styles.value}>{pet.neutered ? "Yes" : "No"}</Text>
       </View>
-      <Pressable onPress={() => navigation.goBack()}>
+      {/* <Pressable onPress={() => navigation.goBack()}>
         <Text style={{ color: "white" }}>{"< Back"}</Text>
-      </Pressable>
+      </Pressable> */}
     </ScrollView>
   );
 }
