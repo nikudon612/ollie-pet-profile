@@ -62,7 +62,7 @@ export default function HomeScreen() {
                 imageStyle={styles.image}
               >
                 <LinearGradient
-                  colors={["transparent", "rgba(0,0,0,0.7)"]}
+                  colors={["transparent", "rgba(0,0,0,0.8)"]}
                   style={styles.overlay}
                 >
                   <Text style={styles.name}>{item.name}</Text>
@@ -79,12 +79,17 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: "#e6e1d5",
+  },
   card: {
     width: "100%",
     height: 300,
     borderRadius: 40,
     overflow: "hidden",
-    marginBottom: 16,
+    marginBottom: 18,
     justifyContent: "flex-end",
   },
   image: {
@@ -92,13 +97,13 @@ const styles = StyleSheet.create({
   },
   overlay: {
     width: "100%",
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 24,
     justifyContent: "flex-end",
   },
   name: {
     fontSize: 32,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#f9f9f9",
   },
 });
