@@ -1,7 +1,7 @@
 // app/profile.tsx
 import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
-import type { Pet } from "@/lib/pets";
+import type { Pet } from "../types";
 
 const navigation = useNavigation();
 
