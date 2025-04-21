@@ -38,20 +38,22 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingBottom: 40, backgroundColor: "#e6e1d5" }}>
-      <View style={styles.header}>
-        <Image
-          source={require("../assets/images/OllieLogo.png")}
-          style={styles.logo}
-        />
-        {/* <Text style={{ fontSize: 24, fontWeight: "bold", marginLeft: 24 }}>Pets</Text> */}
-      </View>
-
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
       <View style={styles.container}>
         <FlatList
           data={pets}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
+          ListHeaderComponent={
+            <>
+              <Text style={styles.headerText}>
+                Tailored Nutrition. Trusted Companions.
+              </Text>
+              <Text style={styles.headerSubText}>
+                Get to know the pets whose health you're helping improve.
+              </Text>
+            </>
+          }
           renderItem={({ item }) => (
             <Pressable
               style={styles.card}
@@ -67,7 +69,7 @@ export default function HomeScreen() {
                   style={styles.overlay}
                 >
                   <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.id}>ID:{item.id}</Text>
+                  <Text style={styles.id}>ID: {item.id}</Text>
                 </LinearGradient>
               </ImageBackground>
 
@@ -83,6 +85,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 32,
+    paddingBottom: 0,
     backgroundColor: "#e6e1d5",
     overflow: "hidden",
   },
@@ -111,19 +114,24 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#f9f9f9",
   },
-  logo:{
+  logo: {
     height: 100,
     width: 100,
     borderRadius: 16,
+    marginBottom: 16,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 32,
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingRight: 0,
-    marginBottom: 0,
-    backgroundColor: "#e6e1d5",
+  headerText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#0e0e0e",
+    marginBottom: 8,
+    textAlign: "left",
+  },
+  headerSubText: {
+    fontSize: 20,
+    fontWeight: "semibold",
+    color: "#0e0e0e",
+    marginBottom: 32,
+    textAlign: "left",
   },
 });
