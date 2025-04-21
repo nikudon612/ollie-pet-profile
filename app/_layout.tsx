@@ -43,10 +43,10 @@ export default function RootLayout() {
           options={{
             title: "Pet Profile",
             headerStyle: {
-              backgroundColor: "#fff", // 👈 your custom background color
+              backgroundColor: "#fff",
             },
             headerTitleStyle: {
-              color: "black", // optional: customize title font
+              color: "black", 
             },
           }}
         />
