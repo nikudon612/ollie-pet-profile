@@ -39,7 +39,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
-      <View style={{ paddingLeft: 32, backgroundColor: "#e6e1d5" }}>
+      <View style={styles.header}>
         <Image
           source={require("../assets/images/OllieLogo.png")}
           style={styles.logo}
@@ -51,6 +51,7 @@ export default function HomeScreen() {
         <FlatList
           data={pets}
           keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <Pressable
               style={styles.card}
@@ -109,5 +110,15 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
     borderRadius: 16,
-  }
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 32,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingRight: 0,
+    marginBottom: 0,
+    backgroundColor: "#e6e1d5",
+  },
 });
