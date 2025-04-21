@@ -38,7 +38,18 @@ export default function RootLayout() {
           name="index"
           options={{ title: "Pets", headerShown: false }}
         />
-        <Stack.Screen name="profile" options={{ title: "Pet Profile" }} />
+        <Stack.Screen
+          name="profile"
+          options={{
+            title: "Pet Profile",
+            headerStyle: {
+              backgroundColor: "#fff", // 👈 your custom background color
+            },
+            headerTitleStyle: {
+              color: "black", // optional: customize title font
+            },
+          }}
+        />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
