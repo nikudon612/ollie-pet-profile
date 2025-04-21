@@ -39,14 +39,12 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
-      <View style={{ padding: 2, backgroundColor: "#e6e1d5" }}>
+      <View style={{ paddingLeft: 32, backgroundColor: "#e6e1d5" }}>
         <Image
           source={require("../assets/images/OllieLogo.png")}
-          style={{ height: 100, borderRadius: 0, marginLeft: -160}}
-          resizeMode="contain"
-          resizeMethod="resize"
+          style={styles.logo}
         />
-        <Text style={{ fontSize: 24, fontWeight: "bold", marginLeft: 24 }}>Pets</Text>
+        {/* <Text style={{ fontSize: 24, fontWeight: "bold", marginLeft: 24 }}>Pets</Text> */}
       </View>
 
       <View style={styles.container}>
@@ -107,4 +105,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#f9f9f9",
   },
+  logo:{
+    height: 100,
+    width: 100,
+    borderRadius: 16,
+  }
 });
