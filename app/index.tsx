@@ -12,7 +12,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { LinearGradient } from 'expo-linear-gradient'; // we'll use this for real gradient
+import { LinearGradient } from "expo-linear-gradient"; // we'll use this for real gradient
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
@@ -38,8 +38,16 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-     
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
+      <View style={{ padding: 2, backgroundColor: "#e6e1d5" }}>
+        <Image
+          source={require("../assets/images/OllieLogo.png")}
+          style={{ height: 100, borderRadius: 0, marginLeft: -160}}
+          resizeMode="contain"
+          resizeMethod="resize"
+        />
+        <Text style={{ fontSize: 24, fontWeight: "bold", marginLeft: 24 }}>Pets</Text>
+      </View>
 
       <View style={styles.container}>
         <FlatList
