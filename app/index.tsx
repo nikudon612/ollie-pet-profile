@@ -12,13 +12,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { LinearGradient } from "expo-linear-gradient"; // we'll use this for real gradient
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  withDelay,
-} from "react-native-reanimated";
+import { LinearGradient } from "expo-linear-gradient"; 
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
@@ -79,7 +73,6 @@ export default function HomeScreen() {
                 </LinearGradient>
               </ImageBackground>
 
-              {/* Overlay container */}
             </Pressable>
           )}
         />
