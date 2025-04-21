@@ -12,7 +12,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { LinearGradient } from 'expo-linear-gradient'; // we'll use this for real gradient
+import { LinearGradient } from "expo-linear-gradient"; // we'll use this for real gradient
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
@@ -38,11 +38,20 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, paddingBottom: 40, backgroundColor: "#e6e1d5" }}>
+      <View style={styles.header}>
+        <Image
+          source={require("../assets/images/OllieLogo.png")}
+          style={styles.logo}
+        />
+        {/* <Text style={{ fontSize: 24, fontWeight: "bold", marginLeft: 24 }}>Pets</Text> */}
+      </View>
+
       <View style={styles.container}>
         <FlatList
           data={pets}
           keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <Pressable
               style={styles.card}
@@ -58,6 +67,7 @@ export default function HomeScreen() {
                   style={styles.overlay}
                 >
                   <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.id}>ID:{item.id}</Text>
                 </LinearGradient>
               </ImageBackground>
 
@@ -72,12 +82,12 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 16,
+    padding: 32,
     backgroundColor: "#e6e1d5",
     overflow: "hidden",
   },
   card: {
-    height: 300,
+    height: 400,
     borderRadius: 40,
     overflow: "hidden",
     marginBottom: 16,
@@ -96,5 +106,24 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: "bold",
     color: "#f9f9f9",
+  },
+  id: {
+    fontSize: 16,
+    color: "#f9f9f9",
+  },
+  logo:{
+    height: 100,
+    width: 100,
+    borderRadius: 16,
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingLeft: 32,
+    paddingTop: 0,
+    paddingBottom: 0,
+    paddingRight: 0,
+    marginBottom: 0,
+    backgroundColor: "#e6e1d5",
   },
 });
