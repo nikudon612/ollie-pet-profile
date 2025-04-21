@@ -13,6 +13,12 @@ import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient"; // we'll use this for real gradient
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withDelay,
+} from "react-native-reanimated";
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
@@ -84,7 +90,7 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 32,
+    padding: 20,
     paddingBottom: 0,
     backgroundColor: "#e6e1d5",
     overflow: "hidden",
@@ -113,6 +119,8 @@ const styles = StyleSheet.create({
   id: {
     fontSize: 16,
     color: "#f9f9f9",
+    opacity: 0.8,
+    marginLeft: 1,
   },
   logo: {
     height: 100,

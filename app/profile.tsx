@@ -36,29 +36,37 @@ export default function ProfileScreen() {
     <ScrollView contentContainerStyle={styles.container}>
       <Image
         source={photoMap[pet.photo]}
-        style={{ width: "100%", height: 200, borderRadius: 10 }}
+        style={styles.photo}
         resizeMode="cover"
       />
       <Text style={styles.heading}>{pet.name}</Text>
 
       <View style={styles.row}>
-        <Text style={styles.label}>ID:</Text>
-        <Text style={styles.value}>{pet.id}</Text>
+        <Text style={styles.label}>
+          ID:
+          <Text style={styles.value}> {pet.id}</Text>
+        </Text>
       </View>
 
       <View style={styles.row}>
-        <Text style={styles.label}>Breeds:</Text>
-        <Text style={styles.value}>{pet.breeds.join(", ")}</Text>
+        <Text style={styles.label}>
+          Breeds:
+          <Text style={styles.value}> {pet.breeds.join(", ")}</Text>
+        </Text>
       </View>
 
       <View style={styles.row}>
-        <Text style={styles.label}>Activity Level:</Text>
-        <Text style={styles.value}>{pet.activityLevel}</Text>
+        <Text style={styles.label}>
+          Activity Level:
+          <Text style={styles.value}> {pet.activityLevel}</Text>
+        </Text>
       </View>
 
       <View style={styles.row}>
-        <Text style={styles.label}>Neutered:</Text>
-        <Text style={styles.value}>{pet.neutered ? "Yes" : "No"}</Text>
+        <Text style={styles.label}>
+          Neutered:
+          <Text style={styles.value}> {pet.neutered ? "Yes" : "No"}</Text>
+        </Text>
       </View>
       {/* <Pressable onPress={() => navigation.goBack()}>
         <Text style={{ color: "white" }}>{"< Back"}</Text>
@@ -70,23 +78,35 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 20,
+    backgroundColor: "#fff",
+    flexGrow: 1,
   },
   heading: {
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 20,
-    color: "white",
+    color: "#403c36",
   },
   row: {
     marginBottom: 16,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
   },
   label: {
     fontSize: 16,
     fontWeight: "600",
-    color: "#555",
+    color: "#403c36",
   },
   value: {
-    fontSize: 18,
-    color: "white",
+    fontSize: 16,
+    color: "#403c36",
+    fontWeight: "semibold",
+  },
+  photo: {
+    width: "100%",
+    height: 400,
+    borderRadius: 20,
+    marginBottom: 20,
   },
 });
