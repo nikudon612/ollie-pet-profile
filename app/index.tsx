@@ -13,6 +13,12 @@ import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient"; // we'll use this for real gradient
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withDelay,
+} from "react-native-reanimated";
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
@@ -38,20 +44,22 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, paddingBottom: 40, backgroundColor: "#e6e1d5" }}>
-      <View style={styles.header}>
-        <Image
-          source={require("../assets/images/OllieLogo.png")}
-          style={styles.logo}
-        />
-        {/* <Text style={{ fontSize: 24, fontWeight: "bold", marginLeft: 24 }}>Pets</Text> */}
-      </View>
-
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
       <View style={styles.container}>
         <FlatList
           data={pets}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
+          ListHeaderComponent={
+            <>
+              <Text style={styles.headerText}>
+                Tailored Nutrition. Trusted Companions.
+              </Text>
+              <Text style={styles.headerSubText}>
+                Get to know the pets whose health you're helping improve.
+              </Text>
+            </>
+          }
           renderItem={({ item }) => (
             <Pressable
               style={styles.card}
@@ -67,7 +75,7 @@ export default function HomeScreen() {
                   style={styles.overlay}
                 >
                   <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.id}>ID:{item.id}</Text>
+                  <Text style={styles.id}>ID: {item.id}</Text>
                 </LinearGradient>
               </ImageBackground>
 
@@ -82,7 +90,8 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: 32,
+    padding: 20,
+    paddingBottom: 0,
     backgroundColor: "#e6e1d5",
     overflow: "hidden",
   },
@@ -110,20 +119,27 @@ const styles = StyleSheet.create({
   id: {
     fontSize: 16,
     color: "#f9f9f9",
+    opacity: 0.8,
+    marginLeft: 1,
   },
-  logo:{
+  logo: {
     height: 100,
     width: 100,
     borderRadius: 16,
+    marginBottom: 16,
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingLeft: 32,
-    paddingTop: 0,
-    paddingBottom: 0,
-    paddingRight: 0,
-    marginBottom: 0,
-    backgroundColor: "#e6e1d5",
+  headerText: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#403c36",
+    marginBottom: 8,
+    textAlign: "left",
+  },
+  headerSubText: {
+    fontSize: 20,
+    fontWeight: "semibold",
+    color: "#403c36",
+    marginBottom: 32,
+    textAlign: "left",
   },
 });
