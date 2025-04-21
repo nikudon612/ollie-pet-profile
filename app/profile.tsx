@@ -1,12 +1,5 @@
 // app/profile.tsx
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Image,
-  Pressable,
-} from "react-native";
+import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { Pet } from "../types";
 
@@ -68,9 +61,6 @@ export default function ProfileScreen() {
           <Text style={styles.value}> {pet.neutered ? "Yes" : "No"}</Text>
         </Text>
       </View>
-      {/* <Pressable onPress={() => navigation.goBack()}>
-        <Text style={{ color: "white" }}>{"< Back"}</Text>
-      </Pressable> */}
     </ScrollView>
   );
 }
