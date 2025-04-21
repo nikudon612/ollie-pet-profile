@@ -38,7 +38,7 @@ export default function HomeScreen() {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
+    <SafeAreaView style={{ flex: 1, paddingBottom: 40, backgroundColor: "#e6e1d5" }}>
       <View style={styles.header}>
         <Image
           source={require("../assets/images/OllieLogo.png")}
@@ -67,6 +67,7 @@ export default function HomeScreen() {
                   style={styles.overlay}
                 >
                   <Text style={styles.name}>{item.name}</Text>
+                  <Text style={styles.id}>ID:{item.id}</Text>
                 </LinearGradient>
               </ImageBackground>
 
@@ -104,6 +105,10 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 32,
     fontWeight: "bold",
+    color: "#f9f9f9",
+  },
+  id: {
+    fontSize: 16,
     color: "#f9f9f9",
   },
   logo:{
