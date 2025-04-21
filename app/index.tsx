@@ -123,14 +123,14 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 30,
     fontWeight: "bold",
-    color: "#0e0e0e",
+    color: "#403c36",
     marginBottom: 8,
     textAlign: "left",
   },
   headerSubText: {
     fontSize: 20,
     fontWeight: "semibold",
-    color: "#0e0e0e",
+    color: "#403c36",
     marginBottom: 32,
     textAlign: "left",
   },
