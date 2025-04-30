@@ -1,6 +1,15 @@
-import { Pressable, StyleSheet, Text, ImageBackground, View } from "react-native";
+import {
+  Animated,
+  Pressable,
+  StyleSheet,
+  Text,
+  ImageBackground,
+  View,
+  useAnimatedValue,
+} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Pet } from "@/lib/pets";
+import { useEffect, useRef } from "react";
 
 interface DogCardProps {
   pet: Pet;
@@ -9,18 +18,34 @@ interface DogCardProps {
 }
 
 export default function DogCard({ pet, photo, onPress }: DogCardProps) {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+  }, []);
+
   return (
-    <Pressable style={styles.card} onPress={onPress}>
-      <ImageBackground source={photo} style={styles.card} imageStyle={styles.image}>
-        <LinearGradient
-          colors={["transparent", "rgba(0,0,0,0.8)"]}
-          style={styles.overlay}
+    <Animated.View style={{ opacity: fadeAnim }}>
+      <Pressable style={styles.card} onPress={onPress}>
+        <ImageBackground
+          source={photo}
+          style={styles.card}
+          imageStyle={styles.image}
         >
-          <Text style={styles.name}>{pet.name}</Text>
-          <Text style={styles.id}>ID: {pet.id}</Text>
-        </LinearGradient>
-      </ImageBackground>
-    </Pressable>
+          <LinearGradient
+            colors={["transparent", "rgba(0,0,0,0.8)"]}
+            style={styles.overlay}
+          >
+            <Text style={styles.name}>{pet.name}</Text>
+            <Text style={styles.id}>ID: {pet.id}</Text>
+          </LinearGradient>
+        </ImageBackground>
+      </Pressable>
+    </Animated.View>
   );
 }
 
