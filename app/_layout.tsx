@@ -45,6 +45,7 @@ export default function RootLayout() {
             headerStyle: {
               backgroundColor: "#fff",
             },
+            headerTintColor: "black",
             headerTitleStyle: {
               color: "black", 
             },
@@ -52,7 +53,7 @@ export default function RootLayout() {
         />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
     </ThemeProvider>
   );
 }
