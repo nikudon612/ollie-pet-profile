@@ -2,6 +2,7 @@
 import { View, Text, StyleSheet, ScrollView, Image } from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import type { Pet } from "../types";
+import DogProfile from "@/components/DogProfile";
 
 type RouteParams = {
   profile: {
@@ -26,44 +27,7 @@ export default function ProfileScreen() {
   const { pet } = route.params;
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={photoMap[pet.photo]}
-        style={styles.photo}
-        resizeMode="cover"
-      />
-      <ScrollView>
-        <Text style={styles.heading}>{pet.name}</Text>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>
-            ID:
-            <Text style={styles.value}> {pet.id}</Text>
-          </Text>
-        </View>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>
-            Breeds:
-            <Text style={styles.value}> {pet.breeds.join(", ")}</Text>
-          </Text>
-        </View>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>
-            Activity Level:
-            <Text style={styles.value}> {pet.activityLevel}</Text>
-          </Text>
-        </View>
-
-        <View style={styles.row}>
-          <Text style={styles.label}>
-            Neutered:
-            <Text style={styles.value}> {pet.neutered ? "Yes" : "No"}</Text>
-          </Text>
-        </View>
-      </ScrollView>
-    </View>
+    <DogProfile pet={pet} />
   );
 }
 
