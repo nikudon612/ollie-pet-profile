@@ -12,7 +12,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { LinearGradient } from "expo-linear-gradient"; 
+import { LinearGradient } from "expo-linear-gradient";
+import DogCard from "@/components/DogCard";
 
 // Must use static require calls!
 const photoMap: Record<string, any> = {
@@ -55,25 +56,15 @@ export default function HomeScreen() {
             </>
           }
           renderItem={({ item }) => (
-            <Pressable
-              style={styles.card}
-              onPress={() => navigation.navigate("profile", { pet: item })}
-            >
-              <ImageBackground
-                source={photoMap[item.photo]}
-                style={styles.card}
-                imageStyle={styles.image}
-              >
-                <LinearGradient
-                  colors={["transparent", "rgba(0,0,0,0.8)"]}
-                  style={styles.overlay}
-                >
-                  <Text style={styles.name}>{item.name}</Text>
-                  <Text style={styles.id}>ID: {item.id}</Text>
-                </LinearGradient>
-              </ImageBackground>
-
-            </Pressable>
+            <DogCard
+              pet={item}
+              photo={photoMap[item.photo]}
+              onPress={() =>
+                navigation.navigate("profile", {
+                  pet: item,
+                })
+              }
+            />
           )}
         />
       </View>
