@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Image,
   ImageBackground,
+  RefreshControl,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getPets, Pet } from "@/lib/pets";
@@ -29,6 +30,7 @@ const photoMap: Record<string, any> = {
 export default function HomeScreen() {
   const navigation = useNavigation();
   const [pets, setPets] = useState<Pet[]>([]);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
@@ -38,6 +40,13 @@ export default function HomeScreen() {
     fetch();
   }, []);
 
+  const handleRefresh = async () => {
+    setRefreshing(true);
+    const data = await getPets();
+    setPets(data);
+    setRefreshing(false);
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#e6e1d5" }}>
       <View style={styles.container}>
@@ -45,6 +54,14 @@ export default function HomeScreen() {
           data={pets}
           keyExtractor={(item) => item.id}
           showsVerticalScrollIndicator={false}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
+              colors={["#403c36"]}
+              tintColor="#403c36"
+            />
+          }
           ListHeaderComponent={
             <>
               <Text style={styles.headerText}>
