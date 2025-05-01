@@ -1,6 +1,14 @@
 // components/DogProfile.tsx
-import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import {
+  Animated,
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
 import type { Pet } from "../types";
+import { useEffect } from "react";
 
 // Static image map for pet photos
 const photoMap: Record<string, any> = {
@@ -18,14 +26,30 @@ type Props = {
 };
 
 export default function DogProfile({ pet }: Props) {
+  const imageOpacity = new Animated.Value(0);
+  const contentOpacity = new Animated.Value(0);
+
+  useEffect(() => {
+    Animated.timing(imageOpacity, {
+      toValue: 1,
+      duration: 5000,
+      useNativeDriver: true,
+    }),
+      Animated.timing(contentOpacity, {
+        toValue: 1,
+        duration: 5000,
+        useNativeDriver: true,
+      }).start();
+  }, []);
+
   return (
     <View style={styles.container}>
-      <Image
+      <Animated.Image
         source={photoMap[pet.photo]}
         style={styles.photo}
         resizeMode="cover"
       />
-      <ScrollView>
+      <Animated.ScrollView>
         <Text style={styles.heading}>{pet.name}</Text>
 
         <View style={styles.row}>
@@ -42,16 +66,18 @@ export default function DogProfile({ pet }: Props) {
 
         <View style={styles.row}>
           <Text style={styles.label}>
-            Activity Level:<Text style={styles.value}> {pet.activityLevel}</Text>
+            Activity Level:
+            <Text style={styles.value}> {pet.activityLevel}</Text>
           </Text>
         </View>
 
         <View style={styles.row}>
           <Text style={styles.label}>
-            Neutered:<Text style={styles.value}> {pet.neutered ? "Yes" : "No"}</Text>
+            Neutered:
+            <Text style={styles.value}> {pet.neutered ? "Yes" : "No"}</Text>
           </Text>
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
     </View>
   );
 }
